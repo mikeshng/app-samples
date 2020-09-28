@@ -2,11 +2,13 @@
 apiVersion: tower.ansible.com/v1alpha1
 kind: AnsibleJob
 metadata:
-  name: service-now-nginx-demo
+  name: posthook-test
+  namespace: ansible
 spec:
-  tower_auth_secret: toweraccess
   job_template_name: Demo Job Template
+  tower_auth_secret: toweraccess
   extra_vars:
-    sn_severity: 3
-    sn_priority: 3
     appName: nginx-demonstration
+    sn_priority: 3
+    sn_severity: 3
+
