@@ -1,0 +1,10 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: dev-placementrule
+  namespace: ansiblepost 
+spec:
+  clusterSelector:
+    matchLabels:
+      environment: dev
+      #local-cluster: "true"
