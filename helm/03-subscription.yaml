@@ -1,0 +1,23 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: simple
+  namespace: helmexample 
+  labels:
+    app: helmexample
+spec:
+  channel: helmexample/dev-helmrepo
+  name: nginx-ingress
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: dev-placementrule
+      namespace: helmexample
+  packageOverrides:
+  - packageName: nginx-ingress
+    packageAlias: nginx-ingress-simple
+    packageOverrides:
+    - path: spec
+      value:
+        defaultBackend:
+          replicaCount: 3

@@ -1,0 +1,21 @@
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: dev-helmrepo
+  namespace: helmexample 
+spec:
+    type: HelmRepo
+    pathname: http://kubernetes-charts.storage.googleapis.com/
+    configMapRef: 
+      name: skip-cert-verify
+      apiVersion: v1
+      kind: ConfigMap
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skip-cert-verify
+  namespace: helmexample 
+data:
+  insecureSkipVerify: "true"
